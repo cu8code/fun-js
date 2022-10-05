@@ -42,6 +42,7 @@ export const Engine = ({
   const renderer = new WebGLRenderer({
     antialias: antialias,
   });
+  const style = renderer.domElement.style;
   renderer.toneMapping = toneMapping;
   renderer.outputEncoding = outputEncoding;
   renderer.physicallyCorrectLights = physicallyCorrectLights;
@@ -51,7 +52,8 @@ export const Engine = ({
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
 
-  renderer.setAnimationLoop(function animate() {
+  renderer.setAnimationLoop(() => {
+    mainLoop()
     renderer.render(scene, camera);
   });
 
